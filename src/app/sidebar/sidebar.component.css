@@ -1,0 +1,35 @@
+/* Sidenav container with 3px black border */
+
+
+/* Force all list text to white */
+ .app-sidenav .mdc-list-item__primary-text {
+  color: #fff !important;
+  
+}
+
+/* Hover effect */
+ .app-sidenav .mdc-list-item:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  
+}
+
+/* Active link highlight */
+ .app-sidenav .mdc-list-item.active-link {
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Smooth transitions */
+ .app-sidenav .mdc-list-item {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark mode adjustments */
+ body.dark-mode .app-sidenav {
+  background-color: #1f1f1f !important;      /* darker for dark mode */
+  border-color: #000000;          /* keep border black in dark mode */
+}
+
+.mat-drawer-inner-container {
+    border: 2px solid  rgba(255, 255, 255, 0.2) !important;
+}

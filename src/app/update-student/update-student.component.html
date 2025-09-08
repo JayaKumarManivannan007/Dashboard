@@ -1,0 +1,66 @@
+<div class="attendance-container">
+  <h2>Update Student Attendance</h2>
+
+  <!-- Add or Edit Student -->
+  <div class="form-group">
+    <input 
+      [(ngModel)]="newStudentName" 
+      placeholder="Enter student name" 
+      class="student-input"
+    />
+
+    <div class="btn-group">
+      <button 
+        *ngIf="editingId === null" 
+        (click)="addStudent()" 
+        class="btn btn-add"
+      >
+        Add
+      </button>
+      <button 
+        *ngIf="editingId !== null" 
+        (click)="saveEdit()" 
+        class="btn btn-save"
+      >
+        Save
+      </button>
+      <button 
+        *ngIf="editingId !== null" 
+        (click)="cancelEdit()" 
+        class="btn btn-cancel"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+
+  <!-- Student Table -->
+  <table class="attendance-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <td>{{ student.name }}</td>
+        <td>
+          <span 
+            class="status" 
+            [ngClass]="student.present ? 'present' : 'absent'"
+          >
+            {{ student.present ? 'Present' : 'Absent' }}
+          </span>
+        </td>
+        <td style="justify-content: space-around; display: flex; gap: 5px;">
+          <button (click)="markPresent(student)" class="btn btn-present">Present</button>
+          <button (click)="markAbsent(student)" class="btn btn-absent">Absent</button>
+          <button (click)="startEdit(student)" class="btn btn-edit">Edit</button>
+          <button (click)="deleteStudent(student.id)" class="btn btn-delete">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

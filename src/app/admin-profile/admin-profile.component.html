@@ -1,0 +1,51 @@
+<div class="profile-container">
+  <div class="profile-pic-wrapper">
+    <img
+      *ngIf="admin.profilePic; else noImage"
+      [src]="admin.profilePic"
+      alt="Profile Picture"
+      class="profile-pic"
+    />
+    <ng-template #noImage>
+      <div class="placeholder-pic">
+        <mat-icon>person</mat-icon>
+      </div>
+    </ng-template>
+
+    <!-- Plus Icon Overlay for Upload -->
+    <label class="upload-btn">
+      <input type="file" accept="image/*" (change)="onFileSelected($event)" hidden />
+      <mat-icon>add</mat-icon>
+    </label>
+  </div>
+
+  <h2>{{ admin.name }}</h2>
+  <p>Email: {{ admin.email }}</p>
+  <p>Phone: {{ admin.phone }}</p>
+
+  <!-- Actions -->
+  <div class="actions">
+    <button mat-raised-button color="primary" (click)="editAdmin()">Edit</button>
+    <button mat-raised-button color="warn" (click)="deleteAdmin()">Delete</button>
+  </div>
+
+  <!-- Add / Update form -->
+  <div *ngIf="showForm" class="form-container">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="admin.name" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="admin.email" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Phone</mat-label>
+      <input matInput [(ngModel)]="admin.phone" />
+    </mat-form-field>
+
+    <button mat-raised-button color="accent" (click)="saveAdmin()">Save</button>
+  </div>
+</div>

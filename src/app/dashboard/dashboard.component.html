@@ -1,0 +1,29 @@
+<div class="dashboard-container">
+    <div
+        style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;  padding-bottom: 5px;">
+        <h2>Dashboard</h2>
+      
+    </div>
+
+  <!-- Dynamic Cards -->
+  <div class="cards">
+    <div class="card" *ngFor="let student of students">
+      <h3>{{ student.name }}</h3>
+      <p [ngClass]="{ 'present': student.present, 'absent': !student.present }">
+        {{ student.present ? 'Present' : 'Absent' }}
+      </p>
+    </div>
+  </div>
+
+    <div class="charts">
+        <!-- Donut Chart -->
+        <div class="chart-card">
+            <app-doughnut-chart></app-doughnut-chart>
+        </div>
+
+        <!-- Bar Chart -->
+        <div class="chart-card">
+            <app-bar-chart></app-bar-chart>
+        </div>
+    </div>
+</div>
